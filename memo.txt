@@ -1,1 +1,4 @@
 p70 フォームを入れるページには必ず「@csrf」を追加する。
+p88 bladeの継承は、親bladeの@yieldに子の@sectionを置き換える。
+　　親bladeの@yieldがなければ、親の@section〜@showを子のsectionで置き換える。
+　　その際、子に@parentがあれば、その箇所に親の@section部分を残す。
