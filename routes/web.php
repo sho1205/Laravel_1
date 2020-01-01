@@ -16,8 +16,23 @@ Route::get('/', function () {
 });
 
 /* Helloコントローラを使用した処理 */
-Route::get('hello', 'HelloController@index');
-Route::get('hello/other', 'HelloController@other');
+
+Route::get('hello/other', 'HelloController@other'); /* otherの場合はこちらを処理 */
+/* p65 パラメータをテンプレートに渡す */
+/*
+Route::get('hello/{id?}', 'HelloController@index'); /* それ以外はこちらを処理 */
+Route::get('hello', 'HelloController@index'); /* それ以外はこちらを処理 */
+
+Route::get('hello2', 'HelloController2@index');
+
+/* view情報をrouteから直接返す */
+/*
+Route::get('hello', function() {
+    return view('hello.index');
+});
+*/
+
+/* view情報をcontrollerから返す */
 
 /* ヒアドキュメントの利用 */
 /*

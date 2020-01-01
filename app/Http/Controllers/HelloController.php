@@ -22,7 +22,15 @@ function tag($tag, $txt) {
 
 class HelloController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $data = [
+            'msg' =>'これはコントローラから渡されたメッセージです。',
+            'id'=>$request->id
+        ];
+        return view('hello.index', $data);
+
+        /* p46 otherページへのリンク */
+        /*
         global $head, $style, $body, $end;
 
         $html = $head . tag('title','Hello/Index') . $style . $body
@@ -30,6 +38,7 @@ class HelloController extends Controller
             . '<a href="/hello/other">go to Other page</a>'
             . $end;
         return $html;
+        */
     }
 
     public function other(){
