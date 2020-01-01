@@ -22,23 +22,19 @@ function tag($tag, $txt) {
 
 class HelloController extends Controller
 {
-    public function index(Request $request){
+    // p71 Bladeを使用
+    public function index(){
         $data = [
-            'msg' =>'これはコントローラから渡されたメッセージです。',
-            'id'=>$request->id
+            'msg'=>'名前を入力してください。'
         ];
         return view('hello.index', $data);
-
-        /* p46 otherページへのリンク */
-        /*
-        global $head, $style, $body, $end;
-
-        $html = $head . tag('title','Hello/Index') . $style . $body
-            . tag('h1', 'Index') . tag('p', 'this is Index page')
-            . '<a href="/hello/other">go to Other page</a>'
-            . $end;
-        return $html;
-        */
+    }
+    public function post(Request $request){
+        $msg = $request->msg;
+        $data = [
+            'msg'=>'こんにちは、' . $msg . 'さん。',
+        ];
+        return view('hello.index', $data);
     }
 
     public function other(){

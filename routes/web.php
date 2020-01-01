@@ -15,13 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Helloコントローラを使用した処理 */
+// Helloコントローラを使用した処理
+Route::get('hello/other', 'HelloController@other'); // otherの場合はこちらを処理
 
-Route::get('hello/other', 'HelloController@other'); /* otherの場合はこちらを処理 */
-/* p65 パラメータをテンプレートに渡す */
-/*
-Route::get('hello/{id?}', 'HelloController@index'); /* それ以外はこちらを処理 */
+// p65 パラメータをテンプレートに渡す
+// Route::get('hello/{id?}', 'HelloController@index'); // それ以外はこちらを処理
+
+// p67 Bladeを使用
 Route::get('hello', 'HelloController@index'); /* それ以外はこちらを処理 */
+// p72 post用Route
+Route::post('hello', 'HelloController@post'); /* それ以外はこちらを処理 */
 
 Route::get('hello2', 'HelloController2@index');
 
