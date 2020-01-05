@@ -23,11 +23,15 @@ function tag($tag, $txt) {
 class HelloController extends Controller
 {
     // p71 Bladeを使用
-    public function index(){
-        $data  = ['one', 'two', 'three', 'four', 'five'];
-        return view('hello.index', ['data'=>$data]);
+    public function index(Request $request){
+
+        return view('hello.index', ['data'=>$request->data]);
+        //return view('hello.index', ['data'=>$request->data]);
+
+        // $data  = ['one', 'two', 'three', 'four', 'five'];
+        // return view('hello.index', ['data'=>$data]);
         
-        // 
+        // テキスト通りでエラーになる。
         // $data  = [
         //     ['name'=>'山田太郎', 'mail'=>'aaa@com'],
         //     ['name'=>'鈴木花子', 'mail'=>'bbb@com'],

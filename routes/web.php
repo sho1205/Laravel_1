@@ -10,10 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Middleware\HelloMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Laravel学習帳
+Route::get('gakushu', 'GakushuController@index');
+Route::post('gakushu', 'GakushuController@index');
+Route::post('gakushu/confirm', 'GakushuController@confirm');
+
 
 // Helloコントローラを使用した処理
 Route::get('hello/other', 'HelloController@other'); // otherの場合はこちらを処理
@@ -22,11 +29,15 @@ Route::get('hello/other', 'HelloController@other'); // otherの場合はこち�
 // Route::get('hello/{id?}', 'HelloController@index'); // それ以外はこちらを処理
 
 // p67 Bladeを使用
-Route::get('hello', 'HelloController@index'); /* それ以外はこちらを処理 */
-// p72 post用Route
+// Route::get('hello', 'HelloController@index');
+Route::get('hello', 'HelloController@index')
+   ->middleware(HelloMiddleware::class);
+
+    // p72 post用Route
 Route::post('hello', 'HelloController@post'); /* それ以外はこちらを処理 */
 
 Route::get('hello2', 'HelloController2@index');
+
 
 /* view情報をrouteから直接返す */
 /*
